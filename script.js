@@ -18,4 +18,3 @@ trophies.forEach((trophy) => {
 if (totalElement) {
   totalElement.textContent = "TOTAL : " + totalKm + " KM";
 }
-<p id="total-km"></p>
