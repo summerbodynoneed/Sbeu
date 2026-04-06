@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: "Gasoek One", sans-serif;
+  min-height: 100vh;
+}
+
+nav {
+  padding: 20px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+main {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 60px;
+  margin: 0;
+  text-align: center;
+}
+
+.info-text {
+  max-width: 700px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.info-text a {
+  color: white;
+}
+
+.gallery {
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 220px;
+  height: 150px;
+  object-fit: cover;
+  border: 1px solid white;
+}
+.trophy-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.trophy-card {
+  text-align: center;
+}
+
+.trophy-card img {
+  width: 100%;
+  max-width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border: 1px solid white;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.trophy-card h2 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.trophy-card p {
+  margin: 6px 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
