@@ -1,20 +1,51 @@
-const trophies = document.querySelectorAll(".trophy-card");
-const totalElement = document.getElementById("total-km");
+const trophies = Array.from(document.querySelectorAll(".trophy-card"));
+const totalElement = document.getElementById("total-km") || document.getElementById("km-counter");
 
-let totalKm = 0;
+function computeTotalKm(cards) {
+  return cards.reduce((sum, trophy) => {
+    const km = Number(trophy.dataset.km) || 0;
+    const runners = String(trophy.dataset.runners || "")
+      .split(",")
+      .map((name) => name.trim())
+      .filter(Boolean);
 
-trophies.forEach((trophy) => {
-  const km = Number(trophy.dataset.km) || 0;
-  const runnersText = trophy.dataset.runners || "";
-
-  const runners = runnersText
-    .split(",")
-    .map((name) => name.trim())
-    .filter((name) => name !== "");
-
-  totalKm += km * runners.length;
-});
-
-if (totalElement) {
-  totalElement.textContent = "TOTAL : " + totalKm + " KM";
+    return sum + km * runners.length;
+  }, 0);
 }
+
+function displayTotal(totalKm) {
+  if (!totalElement) {
+    return;
+  }
+  totalElement.textContent = `${totalKm} KM`;
+}
+
+async function initTotalKm() {
+  if (!totalElement) {
+    return;
+  }
+
+  if (trophies.length > 0) {
+    displayTotal(computeTotalKm(trophies));
+    return;
+  }
+
+  try {
+    const response = await fetch("trophy.html", { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error("Unable to load trophy.html");
+    }
+
+    const htmlText = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, "text/html");
+    const remoteTrophies = Array.from(doc.querySelectorAll(".trophy-card"));
+
+    displayTotal(computeTotalKm(remoteTrophies));
+  } catch (error) {
+    console.error("Impossible de calculer le total des kilomètres :", error);
+    displayTotal(0);
+  }
+}
+
+initTotalKm();
