@@ -55,7 +55,7 @@ h1 {
   width: 220px;
   height: 150px;
   object-fit: cover;
-  border: 1px solid white;
+  border: 0px solid white;
 }
 .trophy-gallery {
   display: grid;
@@ -75,7 +75,7 @@ h1 {
   max-width: 280px;
   height: 280px;
   object-fit: cover;
-  border: 1px solid white;
+  border: 0px solid rgb(0, 0, 0);
   display: block;
   margin: 0 auto 20px;
 }
