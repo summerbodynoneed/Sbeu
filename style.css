@@ -32,7 +32,7 @@ h1 {
   text-align: center;
 }
 
-.info-text {
+.info-text p {
   max-width: 700px;
   text-align: center;
   font-family: Arial, sans-serif;
